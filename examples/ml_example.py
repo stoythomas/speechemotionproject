@@ -15,9 +15,15 @@ def ml_example():
     model.train(x_train, y_train)
     model.evaluate(x_test, y_test)
     filename = '../dataset/Sad/09b03Ta.wav'
-    print('prediction', model.predict_one(
-        get_feature_vector_from_mfcc(filename, flatten=to_flatten)),
-          'Actual 3')
+    i= model.predict_one(get_feature_vector_from_mfcc(filename, flatten=to_flatten))
+    if i==0:
+        print("Prediction: Angry")
+    elif i==1:
+        print("Prediction: Happy")
+    elif i==2:
+        print("Prediction: Neutral")
+    else:
+        print("Prediction: Sad")
 
 
 if __name__ == "__main__":
